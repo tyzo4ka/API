@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+{% csrf_token %}
+    <div class="container">
+        <form method="post">
+        <h3>Калькулятор:</h3>
+        <p>Введите число <input id="A"></p>
+        <p>Введите число <input id="B"></p>
+            <a class="btn btn-primary" onclick="addition()">Сложить</a>
+            <a class="btn btn-primary" onclick="subtraction()">Вычесть</a>
+            <a class="btn btn-primary" onclick="multiply()">Умножить</a>
+            <a class="btn btn-primary" onclick="divide()">Делить</a>
+             <p>Ответ:</p>
+        <div class="answer"></div>
+        </form>
+    </div>
+
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{#    <script#}
+{#  src="https://code.jquery.com/jquery-3.3.1.min.js"#}
+{#  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="#}
+{#  crossorigin="anonymous"></script>#}
+{#    <script src="js/country.js"></script>#}
+</body>
+</html>

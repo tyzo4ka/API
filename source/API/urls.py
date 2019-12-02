@@ -1,5 +1,5 @@
 from django.urls import path
-from source.API.views import addition_view, subtract_view, multiply_view, divide_view
+from .views import addition_view, subtract_view, multiply_view, divide_view
 
 app_name = "API"
 
