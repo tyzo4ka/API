@@ -1,9 +1,15 @@
-from django.shortcuts import render
-
 import json
-from datetime import datetime
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+
+def is_a_number(data):
+    try:
+        a = int(data['A'])
+        b = int(data['B'])
+    except ValueError:
+        return False
+    return True
 
 
 @csrf_exempt
@@ -12,16 +18,14 @@ def addition_view(request, *args, **kwargs):
         if request.body:
             numbers_data = json.loads(request.body)
             print(numbers_data)
-            try:
-                a = int(numbers_data['A'])
-                b = int(numbers_data['B'])
-            except ValueError:
+            if is_a_number(numbers_data):
+                answer = int(numbers_data["A"]) + int(numbers_data["B"])
+                print("answer", answer)
+                return JsonResponse({'answer': answer})
+            else:
                 response = JsonResponse({'error': 'The data entered is not numbers'})
                 response.status_code = 400
                 return response
-            answer = a + b
-            print("answer", answer)
-            return JsonResponse({'answer': answer})
         else:
             response = JsonResponse({'error': 'No data provided!'})
             response.status_code = 400

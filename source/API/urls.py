@@ -1,7 +1,7 @@
 from django.urls import path
-from source.webapp.views import addition_view, subtract_view, multiply_view, divide_view
+from source.API.views import addition_view, subtract_view, multiply_view, divide_view
 
-app_name = "webapp"
+app_name = "API"
 
 urlpatterns = [
     path('add/', addition_view, name="add"),
